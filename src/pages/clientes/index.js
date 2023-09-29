@@ -175,10 +175,10 @@ function ClientePage() {
 
       {/* <!-- Botão adicionar --> */}
       <div className="row">
-        <div className="col-sm-3">
+        <div className="col-sm-3 " >
           <button
             id="btn-adicionar"
-            className="btn btn-outline-primary btn-sm espacar-ed"
+            className="btn btn-outline-primary btn-sm espacar-ad"
             data-bs-toggle="modal"
             data-bs-target="#modal-cliente"
             onClick={adicionar}
