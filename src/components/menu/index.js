@@ -15,6 +15,7 @@ function Menu(){
                 <li id='destra'><Link to= '#'>DESTRA</Link></li>
                 <li><Link to='/'>Home</Link></li>
                 <li><Link to='/membros'>Membros</Link></li>
+                <li><Link to='/ministerio'>Ministério</Link></li>
                 <li><Link onClick={logout}>Sair</Link></li>
             </ul>
         )

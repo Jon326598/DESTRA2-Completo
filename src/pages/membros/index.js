@@ -261,7 +261,7 @@ function MembroPage() {
                       disabled
                       type="text"
                       className="form-control"
-                      id="id"
+                      id="idMenu"
                       value={membro.id}
                       onChange={(e) => setMembro({ ...membro, id: e.target.value })}
                     />
@@ -286,13 +286,13 @@ function MembroPage() {
                     </select>
                   </div>
                 
-                  <div className="col-sm-6">
+                  <div className="col-sm-5">
                     <label for="email" className="form-label">E-mail</label>
                     <input type="text" className="form-control" id="email" value={membro.email}
                       onChange={(e) => setMembro({ ...membro, email: e.target.value })}
                     />
                   </div>
-                  <div className="col-sm-3">
+                  <div className="col-sm-4">
                     <label for="telefone" className="form-label">Telefone</label>
                     <input type="text" className="form-control" id="telefone" value={membro.telefone}
                       onChange={(e) => setMembro({ ...membro, telefone: e.target.value })}
