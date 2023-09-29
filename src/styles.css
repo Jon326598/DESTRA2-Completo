@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+/* link adobe Color */
+/* https://materialui.co/colors/ */
+
+:root {
+    --cor-primaria: #e98708e8;
+    --cor-secundaria:#f3ab68;
+}
+
+/* CSS RESET */
+* {
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+table.table {
+    box-shadow: 0 0 10px 0 rgb(50 50 50 / 82%);
+}
+
+table.table>thead>tr th {
+    background-color: 'dark';
+    text-align: center;
+}
+
+button.btn{
+    min-width: 80px;
+}
+
+/* Override */
+/* div.modal-dialog{
+    max-width: 700px;
+} */
+
+
+#loading{
+    display: none;
+}
+
+button.btn-primary {
+    --bs-btn-bg: var(--cor-primaria);
+    --bs-btn-border-color: var(--cor-primaria);
+    --bs-btn-hover-bg: var(--cor-secundaria);
+    --bs-btn-hover-border-color: var(--cor-secundaria);
+    --bs-btn-active-bg: var(--cor-secundaria);
+    --bs-btn-active-border-color: var(--cor-secundaria);
+    --bs-btn-disabled-bg: var(--cor-primaria);
+    --bs-btn-disabled-border-color: var(--cor-primaria);
+}
+
+button.btn-outline-primary {
+    --bs-btn-color: var(--cor-primaria);
+    --bs-btn-border-color: var(--cor-primaria);
+    --bs-btn-hover-bg: var(--cor-primaria);
+    --bs-btn-hover-border-color: var(--cor-primaria);
+    --bs-btn-active-bg: var(--cor-primaria);
+    --bs-btn-active-border-color: var(--cor-primaria);
+    --bs-btn-disabled-color: var(--cor-primaria);
+    --bs-btn-disabled-border-color: var(--cor-primaria);
+
+}
+.espacar{
+    margin-left: 5px;
+    margin-right: 5px;
+}
