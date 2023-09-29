@@ -18,15 +18,15 @@ function salvarUsuario(usuario){
 }
 
 function obterToken(){
-    return localStorage.getItem("token");  //retorna o valor do item "token"
+    return localStorage.getItem("token");
 }
 
 function obterUsuario(){
-    return localStorage.getItem("usuario") || "{}";   //retorna o valor do item "usuario", se não existir, ret
+    return localStorage.getItem("usuario") || "{}";
 }
 
 function sairSistema(){
-    localStorage.removeItem("token");//remove o item "token", limpando a sessão
+    localStorage.removeItem("token");
     localStorage.removeItem("usuario");
     direcionarTelaDeLogin();
 }
@@ -38,7 +38,7 @@ function direcionarTelaDeLogin(){
 function usuarioEstaLogado(){
     let token = obterToken();
 
-    return !!token;
+    return !! token;
 }
 
 // eslint-disable-next-line no-unused-vars
@@ -46,7 +46,6 @@ function validarUsuarioAutenticado(){
 
     let logado = usuarioEstaLogado();
 
-    // Só vai entrar aqui se eu estiver na tela login
     // eslint-disable-next-line eqeqeq
     if(window.location.pathname == "/login"){
         
@@ -61,7 +60,7 @@ function validarUsuarioAutenticado(){
 }
 
 
-// validarUsuarioAutenticado();
+    validarUsuarioAutenticado();
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
@@ -70,5 +69,6 @@ export default {
     salvarUsuario,
     sairSistema,
     obterToken,
-    obterUsuario
+    obterUsuario,
+    validarUsuarioAutenticado
 }

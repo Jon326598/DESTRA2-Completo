@@ -1,4 +1,4 @@
-export default class Cliente{
+export default class Membro{
     constructor(obj) {
         obj = obj || {};
 
@@ -9,6 +9,5 @@ export default class Cliente{
         this.email = obj.email;
         this.dataNasc = obj.dataNasc;
         this.telefone = obj.telefone;
-        // this.dataCadastro = obj.dataCadastro;
     }    
 }

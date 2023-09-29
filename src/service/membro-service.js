@@ -9,21 +9,19 @@ function obter(){
     });
 }
 
-function adicionar(cliente){
+function adicionar(membro){
 
-    cliente.dataCadastro = new Date().toISOString();
     return new Promise((resolve, reject) => {
-        service.post('/clientes', cliente)
+        service.post('/clientes', membro)
         .then(response => resolve(response))
         .catch(erro => reject(erro))
     });
 }
 
-function atualizar(cliente){
+function atualizar(membro){
 
-    // cliente.dataCadastro = new Date().toISOString();
     return new Promise((resolve, reject) => {
-        service.put(`/clientes/${cliente.id}`, cliente)
+        service.put(`/clientes/${membro.id}`, membro)
         .then(response => resolve(response))
         .catch(erro => reject(erro))
     });
