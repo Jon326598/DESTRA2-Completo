@@ -98,7 +98,7 @@ function ClientePage() {
       .then(response => {
 
         atualizarClienteNaTabela(response.data);
-      
+
         limparCliente();
 
         Swal.fire({
@@ -138,10 +138,12 @@ function ClientePage() {
       ...cliente,
       id: '',
       nome: '',
+      sexo: '',
       cpfOuCnpj: '',
       email: '',
+      dataNasc: '',
       telefone: '',
-      dataCadastro: '',
+      // dataCadastro: '',
     });
   }
 
@@ -162,7 +164,7 @@ function ClientePage() {
           <button
             id="btn-adicionar"
             className="btn btn-primary btn-sm"
-            data-bs-toggle="modal" 
+            data-bs-toggle="modal"
             data-bs-target="#modal-cliente"
             onClick={adicionar}
             data-bs-dismiss="modal"
@@ -180,10 +182,13 @@ function ClientePage() {
               <tr>
                 <th>Id</th>
                 <th>Nome</th>
-                <th>CPF</th>
+                <th>Sexo</th>
+                <th>Telefone</th>                
                 <th>E-mail</th>
-                <th>Telefone</th>
-                <th>Cadastro</th>
+                <th>CPF</th>
+                <th>Data Nasc.</th>
+                
+                {/* <th>Cadastro</th> */}
                 <th></th>
               </tr>
             </thead>
@@ -193,10 +198,13 @@ function ClientePage() {
                 <tr>
                   <td>{cliente.id}</td>
                   <td>{cliente.nome}</td>
-                  <td>{cliente.cpfOuCnpj}</td>
-                  <td>{cliente.email}</td>
+                  <td>{cliente.sexo}</td>
                   <td>{cliente.telefone}</td>
-                  <td>{new Date(cliente.dataCadastro).toLocaleDateString()}</td>
+                  <td>{cliente.email}</td>
+                  <td>{cliente.cpfOuCnpj}</td>
+                  <td>{cliente.dataNasc}</td>
+
+                  {/* <td>{new Date(cliente.dataCadastro).toLocaleDateString()}</td> */}
                   <td>
                     <button
                       id={cliente.id}
@@ -263,8 +271,17 @@ function ClientePage() {
                     />
                   </div>
                 </div>
-
                 <div className="row">
+                  <div className="col-sm-3">
+                    <label for="sexo" className="form-label">Sexo</label>
+                    <select className="form-select" id="sexo" value={cliente.sexo}
+                      onChange={(e) => setCliente({ ...cliente, sexo: e.target.value })}
+                      >
+                      <option>Masculino</option>
+                      <option>Feminino</option>
+                    </select>
+                  </div>
+                
                   <div className="col-sm-6">
                     <label for="email" className="form-label">E-mail</label>
                     <input type="text" className="form-control" id="email" value={cliente.email}
@@ -277,7 +294,7 @@ function ClientePage() {
                       onChange={(e) => setCliente({ ...cliente, telefone: e.target.value })}
                     />
                   </div>
-                </div>  
+                </div>
                 <div className="row">
                   <div className="col-sm-4">
                     <label for="cpf" className="form-label">CPF</label>
@@ -285,20 +302,25 @@ function ClientePage() {
                       onChange={(e) => setCliente({ ...cliente, cpfOuCnpj: e.target.value })}
                     />
                   </div>
-                  
                   <div className="col-sm-4">
+                    <label for="dataNasc" className="form-label">Data Nasc.</label>
+                    <input type="text" className="form-control" id="dataNasc" value={cliente.dataNasc}
+                      onChange={(e) => setCliente({ ...cliente, dataNasc: e.target.value })}
+                    />
+                  </div>
+                  {/* <div className="col-sm-4">
                     <label for="dataCadastro" className="form-label">Data de cadastro</label>
                     <input type="date" disabled className="form-control" id="dataCadastro" value={cliente.dataCadastro}
                       onChange={(e) => setCliente({ ...cliente, dataCadastro: e.target.value })}
                     />
-                  </div>
+                  </div> */}
                 </div>
 
               </div>
 
               {/* <!-- Modal footer --> */}
               <div className="modal-footer">
-                <button id="btn-salvar" className="btn btn-primary btn-sm" onClick={salvar}>Salvar</button>
+                <button id="btn-salvar" className="btn btn-primary btn-sm" data-bs-dismiss="modal" onClick={salvar}>Salvar</button>
                 <button id="btn-cancelar" className="btn btn-light btn-sm" data-bs-dismiss="modal" >Cancelar</button>
               </div>
             </div>
