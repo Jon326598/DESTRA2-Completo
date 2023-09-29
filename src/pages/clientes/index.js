@@ -42,10 +42,32 @@ function ClientePage() {
     // eslint-disable-next-line eqeqeq
     let clienteEncontrado = clientes.find(c => c.id == e.target.id);
 
+    Swal.fire({
+       
+      text: 'Deseja realmente excluir o membro ' + clienteEncontrado.nome + ' ?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sim, excluir!',
+      cancelButtonText: 'Cancelar'
+  })
+      .then((result) => {
+          if (result.isConfirmed) {
+              excluirClienteBackend(clienteEncontrado.id);
+              Swal.fire({
+                  icon: 'success',
+                  title: 'Membro excluído com sucesso !',
+                  showConfirmButton: false,
+                  timer: 2500
+              })
+          }
+      })
+
     // eslint-disable-next-line no-restricted-globals
-    if (confirm("Deseja realmente excluir o cliente " + clienteEncontrado.nome + " ?")) {
-      excluirClienteBackend(clienteEncontrado.id)
-    }
+    // if (confirm("Deseja realmente excluir o cliente " + clienteEncontrado.nome + " ?")) {
+    //   excluirClienteBackend(clienteEncontrado.id)
+    // }
   }
 
   const adicionar = () => {
@@ -80,9 +102,9 @@ function ClientePage() {
         setClientes(lista => [...lista, new Cliente(response.data)])
         limparCliente();
         Swal.fire({
-          position: 'top-end',
+          position: 'center',
           icon: 'success',
-          title: 'Cliente adicionado com sucesso',
+          title: 'Membro adicionado com sucesso',
           showConfirmButton: false,
           timer: 2500
         })
@@ -102,9 +124,9 @@ function ClientePage() {
         limparCliente();
 
         Swal.fire({
-          position: 'top-end',
+          position: 'center',
           icon: 'success',
-          title: 'Cliente atualizado com sucesso',
+          title: 'Membro atualizado com sucesso',
           showConfirmButton: false,
           timer: 2500
         })
@@ -122,13 +144,6 @@ function ClientePage() {
 
         atualizarClienteNaTabela(clienteEncontrado, true);
 
-        Swal.fire({
-          position: 'top-end',
-          icon: 'success',
-          title: 'Cliente exluído com sucesso',
-          showConfirmButton: false,
-          timer: 2500
-        })
       })
       .catch()
   }
@@ -189,7 +204,7 @@ function ClientePage() {
                 <th>Data Nasc.</th>
                 
                 {/* <th>Cadastro</th> */}
-                <th></th>
+                <th>Ações</th>
               </tr>
             </thead>
             <tbody>
@@ -209,7 +224,7 @@ function ClientePage() {
                     <button
                       id={cliente.id}
                       onClick={editar}
-                      class="btn btn-outline-primary btn-sm mr-3"
+                      class="btn btn-outline-primary btn-sm"
                       data-bs-toggle="modal"
                       data-bs-target="#modal-cliente"
                       data-bs-dismiss="modal"
@@ -277,6 +292,7 @@ function ClientePage() {
                     <select className="form-select" id="sexo" value={cliente.sexo}
                       onChange={(e) => setCliente({ ...cliente, sexo: e.target.value })}
                       >
+                        <option> </option>
                       <option>Masculino</option>
                       <option>Feminino</option>
                     </select>
@@ -321,7 +337,7 @@ function ClientePage() {
               {/* <!-- Modal footer --> */}
               <div className="modal-footer">
                 <button id="btn-salvar" className="btn btn-primary btn-sm" data-bs-dismiss="modal" onClick={salvar}>Salvar</button>
-                <button id="btn-cancelar" className="btn btn-light btn-sm" data-bs-dismiss="modal" >Cancelar</button>
+                <button id="btn-cancelar" className="btn btn-light btn-sm" data-bs-dismiss="modal" onClick={limparCliente}>Cancelar</button>
               </div>
             </div>
           </div>
